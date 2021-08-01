@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import fetch from 'node-fetch';
+import page from '../page';
 
 const userGoogleAddress = (address) => {
   const [ map, setMap ] = useState({});
-  const API = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBEJ0GNMZeAs_JX2a3S9ROtBFgoMeVmEg4`;
+  const API = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${page.constants?.key_google}`;
 
   useEffect( async () => {
     await fetch(API)
