@@ -1,8 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import fetch from 'node-fetch';
 import initialState from '../initialState';
+
+
+// const API = 'http://localhost:1337/products';
+const API2 = 'https://us-central1-gndx-fake-api.cloudfunctions.net/api';
 
 const useInitialState = () => {
   const [ state, setState ] = useState(initialState);
+  const [ products, setProducts ] = useState([]); 
+
+  useEffect( async () => {
+    await fetch(API2)
+    .then(response => response.json())
+    .then(data => setProducts(data))
+  }, [])
 
   const addToCart = (payload) => {
     setState({
@@ -37,6 +49,7 @@ const useInitialState = () => {
     removeFromCart,
     addToBuyer,
     addNewOrder,
+    products,
     state
   };
 

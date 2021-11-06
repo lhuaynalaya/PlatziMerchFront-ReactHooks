@@ -2,7 +2,7 @@ import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import page from '../page';
 
-const Map = ({ data }) => {
+const Map = () => {
   const MapStyle = {
     height: '50vh',
     width: '100%'  
